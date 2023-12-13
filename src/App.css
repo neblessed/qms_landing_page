@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700;800&display=swap');
+
+.qms {
+    font-family: 'Lato', sans-serif;
+  }
+
+.featured {
+  font-family: 'Inter', sans-serif;
+}
