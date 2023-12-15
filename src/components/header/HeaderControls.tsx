@@ -12,6 +12,8 @@ export const HeaderControls = () => {
                     <div className="hover:text-stone-900 cursor-pointer">Pricing</div>
                     <div className="hover:text-stone-900 cursor-pointer">Company</div>
                 </div>
+                <button className="rounded-3xl bg-stone-800 h-10 px-12 right-2 text-center absolute text-gray-300 m-3 mx-8">
+                    <a></a>Try it</button>
             </nav>
         </header>
 
