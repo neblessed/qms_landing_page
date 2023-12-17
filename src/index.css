@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700;800&display=swap');
 
 body {
   margin: 0;
@@ -14,4 +16,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.text-qms {
+  font-family: 'Inter', sans-serif;
 }

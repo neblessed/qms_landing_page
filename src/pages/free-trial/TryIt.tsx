@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import './TryIt.style.css'
-import { Check } from 'lucide-react'
+import { Check, Undo2 } from 'lucide-react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ITryitForm } from './TryIt.interface'
 
@@ -18,6 +17,10 @@ export const TryIt = () => {
 
     return (
         <div>
+            <a href="/">
+                <Undo2 className="w-7 h-7 absolute left-5 mt-5 stroke-neutral-300" />
+            </a>
+
             <form className="div-tryit flex justify-center absolute" onSubmit={handleSubmit(onSub)}>
                 <div className="text-qms pt-10 align-text-top mr-20">
                     <p className="text-4xl font-bold">Try out QMS free for 14 days to speed up your testing</p>
@@ -98,7 +101,7 @@ export const TryIt = () => {
                     </div>
                 </div>
             </form>
-        </div>
+        </div >
     );
 
 }
