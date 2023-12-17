@@ -48,7 +48,7 @@ export const TryIt = () => {
                         <input {...register('name', {
                             required: 'required field',
                             maxLength: { value: 20, message: 'max length 20' }
-                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100 rounded-xl hover:border-stone-400"></input>
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-110 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
@@ -62,7 +62,7 @@ export const TryIt = () => {
                                 message: 'not valid email',
                                 value: /^\S+@\S+\.\S+$/
                             }
-                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100 rounded-xl hover:border-stone-400"></input>
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-110 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
@@ -72,14 +72,14 @@ export const TryIt = () => {
                         <input {...register('companyName', {
                             required: 'required field',
                             maxLength: { value: 20, message: 'max length 20' }
-                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100 rounded-xl hover:border-stone-400"></input>
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-110 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
                             <label className="text-base font-bold">Domain name</label>
                             {errors?.domain && <InputErrorComponent message={errors.domain.message} />}
                         </div>
-                        <div className="flex justify-center border-stone-300 border-2 w-100 rounded-xl hover:border-stone-400">
+                        <div className="flex justify-center border-stone-300 border-2 w-110 rounded-xl hover:border-stone-400">
                             <input {...register('domain', {
                                 required: 'required field',
                                 maxLength: { value: 20, message: 'max length 20' }
@@ -91,7 +91,7 @@ export const TryIt = () => {
                             {errors.isAgree && <InputErrorComponent message={errors.isAgree.message} />}
                             <p className="font-medium">I agree to QMS Software Terms of use and Privacy Policy.</p>
                         </div>
-                        <button type="submit" className="rounded-3xl left-1/2 mt-8 py-3 px-40 ml-2 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">Start my free trial</button>
+                        <button type="submit" className="rounded-3xl block mt-6 py-3 px-40 ml-8 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">Start my free trial</button>
                     </div>
                 </div>
             </form>

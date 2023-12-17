@@ -5,7 +5,7 @@ import TryIt from './components/tryit/TryIt';
 function App() {
   return (
     <div>
-      <HeaderControls />
+      {/* <HeaderControls /> */}
       <TryIt></TryIt>
       {/* <div className="mx-24 mt-10">
         <p className="font-bold text-xl mb-10 mt-20 qms">Quality Management System</p>
