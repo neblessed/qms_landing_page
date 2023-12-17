@@ -1,32 +1,16 @@
 import { useState } from 'react';
 import './TryIt.style.css'
 import { Check } from 'lucide-react'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { ITryitForm } from './TryIt.interface'
 
 export const TryIt = () => {
-    const [email, setEmail] = useState('');
-    const [emailDirty, setEmailDirty] = useState(false);
-    const [emailError] = useState('not valid email');
-    const [nameDirty, setNameDirty] = useState(false);
-    const [domainDirty, setDomainDirty] = useState(false);
-    const [companyDirty, setCompanyDirty] = useState(false);
-    const [fieldError] = useState('required field');
-    const [isChecked, setIsChecked] = useState(false);
-
-    // const methods = useForm();
-    // const onSubmit = methods.handleSubmit(data => {
-    //     console.log(data)
-    // })
-
-    const emailHandler = (e: any) => {
-        setEmail(e.target.value);
-        const re = /^\S+@\S+\.\S+$/;
-        (!re.test(String(e.target.value).toLowerCase())) ? setEmailDirty(true) : setEmailDirty(false);
-    }
+    const { register, handleSubmit, formState: { errors } } = useForm<ITryitForm>();
+    const onSub: SubmitHandler<ITryitForm> = data => console.log(data);
 
     return (
         <div>
-            <form className="div-tryit flex justify-center absolute">
+            <form className="div-tryit flex justify-center absolute" onSubmit={handleSubmit(onSub)}>
                 <div className="text-qms pt-10 align-text-top">
                     <p className="text-3xl font-bold">Try out QMS free for 14 days to speed up your testing</p>
                     <br />
@@ -46,45 +30,60 @@ export const TryIt = () => {
                             <p>Streamlined results capturing and analysis</p>
                         </div>
                     </div>
-
                 </div>
-
                 <div className="text-qms pt-10">
                     <div className="gap-4">
                         <div className="flex gap-3 justify-start">
                             <label className="text-base font-bold">Your name</label>
-                            {(nameDirty && fieldError) && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{fieldError}</div>}
+                            {errors?.name && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{errors.name.message}</div>}
                         </div>
-                        <input onBlur={e => setNameDirty(true)} className="border-2 border-stone-300 block py-2 pl-1 w-100"></input>
+                        <input {...register('name', { required: 'required field', maxLength: { value: 20, message: 'max length 20' } })} className="border-2 border-stone-300 block py-3 pl-2 w-100"></input>
                     </div>
-                    <div className="gap-4 mt-3">
+                    <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
                             <label className="text-base font-bold">Work email:</label>
-                            {(emailDirty && emailError) && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{emailError}</div>}
+                            {errors?.email && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{errors.email.message}</div>}
                         </div>
-                        <input onChange={e => emailHandler(e)} className="border-2 border-stone-300 block py-2 pl-1 w-100" value={email}></input>
+                        <input {...register('email', {
+                            required: 'required field',
+                            maxLength: { value: 20, message: 'max length 20' },
+                            pattern: {
+                                message: 'not valid email',
+                                value: /^\S+@\S+\.\S+$/
+                            }
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100"></input>
                     </div>
-                    <div className="gap-4 mt-3">
+                    <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
                             <label className="text-base font-bold">Company name:</label>
-                            {(companyDirty) && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{fieldError}</div>}
+                            {errors?.companyName && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{errors.companyName.message}</div>}
                         </div>
-                        <input onBlur={e => setCompanyDirty(true)} className="border-2 border-stone-300 block py-2 pl-1 w-100"></input>
+                        <input {...register('companyName', {
+                            required: 'required field',
+                            maxLength: { value: 20, message: 'max length 20' }
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100"></input>
                     </div>
-                    <div className="gap-4 mt-3">
+                    <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
-                            <label className="text-base font-bold">Domain name:</label>
-                            {(domainDirty) && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{fieldError}</div>}
+                            <label {...register('domain', {
+                                required: 'required field',
+                                maxLength: { value: 20, message: 'max length 20' }
+                            })} className="text-base font-bold">Domain name:</label>
+                            {errors?.domain && <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{errors.domain.message}</div>}
                         </div>
                         <div className="flex justify-center">
-                            <input onBlur={e => setDomainDirty(true)} className="border-2 border-stone-300 block py-2 w-96 pl-1"></input>
+                            <input {...register('domain', {
+                                required: 'required field',
+                                maxLength: { value: 20, message: 'max length 20' }
+                            })} className="border-2 border-stone-300 block py-3 w-96 pl-2"></input>
                             <div className="bg-slate-300 py-3 px-1 text-qms font-bold border-2 border-stone-300">.qms.cloud</div>
                         </div>
-                        <div className="flex justify-start mt-3">
-                            <input type="checkbox" value="I agree to Qameta Software Terms of use and Privacy Policy." className="w-5 h-5" />
+                        <div className="flex justify-start mt-5">
+                            {errors.isAgree && <p className="text-red-600 text-lg absolute end-0 font-bold text-qms">*</p>}
+                            <input {...register('isAgree', { required: true, value: false })} type="checkbox" value="I agree to Qameta Software Terms of use and Privacy Policy." className="w-5 h-5" />
                             <p className="text-qms font-medium ml-1">I agree to QMS Software Terms of use and Privacy Policy.</p>
                         </div>
-                        <button type="submit" className="rounded-3xl left-1/2 mt-3 py-3 px-40 ml-2 text-qms font-bold bg-stone-800 text-white">Start my free trial</button>
+                        <button type="submit" className="rounded-3xl left-1/2 mt-8 py-3 px-40 ml-2 text-qms font-bold bg-stone-800 text-white">Start my free trial</button>
                     </div>
                 </div>
             </form>
