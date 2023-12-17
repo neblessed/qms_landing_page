@@ -12,7 +12,7 @@ export const VerificationPage = () => {
                 </div>
                 <input className="rounded-3xl border-2 border-stone-400 py-3 w-40 pl-3 text-qms text-center font-bold"></input>
                 <button className="btn-qms px-10 py-1">
-                    <a href="/">Verify</a>
+                    <a href="/free-trial">Verify</a>
                 </button>
             </div>
         </div>
