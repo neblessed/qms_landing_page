@@ -45,11 +45,14 @@ export const TryIt = () => {
                             <label className="text-base font-bold">Your name</label>
                             {errors?.name && <InputErrorComponent message={errors.name.message} />}
                         </div>
-                        <input {...register('name', { required: 'required field', maxLength: { value: 20, message: 'max length 20' } })} className="border-2 border-stone-300 block py-3 pl-2 w-100"></input>
+                        <input {...register('name', {
+                            required: 'required field',
+                            maxLength: { value: 20, message: 'max length 20' }
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
-                            <label className="text-base font-bold">Work email:</label>
+                            <label className="text-base font-bold">Work email</label>
                             {errors?.email && <InputErrorComponent message={errors.email.message} />}
                         </div>
                         <input {...register('email', {
@@ -59,36 +62,36 @@ export const TryIt = () => {
                                 message: 'not valid email',
                                 value: /^\S+@\S+\.\S+$/
                             }
-                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100"></input>
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
-                            <label className="text-base font-bold">Company name:</label>
+                            <label className="text-base font-bold">Company name</label>
                             {errors?.companyName && <InputErrorComponent message={errors.companyName.message} />}
                         </div>
                         <input {...register('companyName', {
                             required: 'required field',
                             maxLength: { value: 20, message: 'max length 20' }
-                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100"></input>
+                        })} className="border-2 border-stone-300 block py-3 pl-2 w-100 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
                         <div className="flex gap-3 justify-start">
-                            <label className="text-base font-bold">Domain name:</label>
+                            <label className="text-base font-bold">Domain name</label>
                             {errors?.domain && <InputErrorComponent message={errors.domain.message} />}
                         </div>
-                        <div className="flex justify-center border-stone-300 border-2 w-100">
+                        <div className="flex justify-center border-stone-300 border-2 w-100 rounded-xl hover:border-stone-400">
                             <input {...register('domain', {
                                 required: 'required field',
                                 maxLength: { value: 20, message: 'max length 20' }
                             })} className="block py-3 pl-2"></input>
-                            <div className="bg-stone-100 py-3 font-bold text-stone-500 w-30 text-center absolute right-0 border-r-2 border-stone-300 text-qms text-qms">.qms.cloud</div>
+                            <div className="bg-stone-100 py-3 font-bold text-stone-500 w-30 text-center absolute right-0 border-r-2 border-stone-300 text-qms text-qms rounded-r-xl">.qms.cloud</div>
                         </div>
                         <div className="flex justify-start mt-5 gap-3 text-qms">
                             <input {...register('isAgree', { required: '*', value: false })} type="checkbox" className="w-5 h-5" />
                             {errors.isAgree && <InputErrorComponent message={errors.isAgree.message} />}
                             <p className="font-medium">I agree to QMS Software Terms of use and Privacy Policy.</p>
                         </div>
-                        <button type="submit" className="rounded-3xl left-1/2 mt-8 py-3 px-40 ml-2 text-qms font-bold bg-stone-800 text-white">Start my free trial</button>
+                        <button type="submit" className="rounded-3xl left-1/2 mt-8 py-3 px-40 ml-2 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">Start my free trial</button>
                     </div>
                 </div>
             </form>
