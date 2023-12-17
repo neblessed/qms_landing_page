@@ -40,6 +40,9 @@ export const TryIt = () => {
                     </div>
                 </div>
                 <div className="text-qms pt-10">
+                    <div>
+                        <p className="text-qms text-xl font-bold mb-5">Start your free trial now</p>
+                    </div>
                     <div className="gap-4">
                         <div className="flex gap-3 justify-start">
                             <label className="text-base font-bold">Your name</label>
