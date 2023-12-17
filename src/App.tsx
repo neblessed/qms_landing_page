@@ -4,6 +4,7 @@ import TryIt from './pages/free-trial/TryIt';
 import HomePage from './pages/home/Home';
 import FeaturesPage from './pages/features/Features';
 import { RouteUrl } from './enums/RouteUrl';
+import VerificationPage from './pages/verification_code/Verification';
 
 
 
@@ -17,6 +18,7 @@ function App() {
         <Route path={RouteUrl.TEAM} Component={FeaturesPage} />
         <Route path={RouteUrl.PRICING} Component={FeaturesPage} />
         <Route path={RouteUrl.COMPANY} Component={FeaturesPage} />
+        <Route path="/verification" Component={VerificationPage} />
       </Routes>
     </BrowserRouter>
   );

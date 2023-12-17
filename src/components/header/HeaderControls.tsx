@@ -20,7 +20,7 @@ export const HeaderControls = () => {
                     </div>
                 </div>
                 <button className="rounded-3xl bg-stone-800 h-10 px-10 right-2 text-center absolute text-white text-lg m-3 mx-8 font-bold">
-                    <a href="/free-trial">Try QMS</a>
+                    <a href="/free-trial" className="block py-1">Try QMS</a>
                 </button>
             </nav>
         </header>

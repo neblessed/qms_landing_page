@@ -21,3 +21,7 @@ code {
 .text-qms {
   font-family: 'Inter', sans-serif;
 }
+
+.btn-qms {
+  @apply rounded-3xl text-qms font-bold bg-stone-700 text-white hover:bg-stone-800
+}

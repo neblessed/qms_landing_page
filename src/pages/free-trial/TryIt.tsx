@@ -97,7 +97,9 @@ export const TryIt = () => {
                             {errors.isAgree && <InputErrorComponent message={errors.isAgree.message} />}
                             <p className="font-medium">I agree to QMS Software Terms of use and Privacy Policy.</p>
                         </div>
-                        <button type="submit" className="rounded-3xl block mt-6 py-3 px-40 ml-8 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">Start my free trial</button>
+                        <button type="submit" className="rounded-3xl block mt-6 py-3 px-40 ml-8 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">
+                            <a href="/verification">Start my free trial</a>
+                        </button>
                     </div>
                 </div>
             </form>
