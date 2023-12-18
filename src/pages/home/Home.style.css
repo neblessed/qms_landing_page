@@ -8,3 +8,8 @@
 .featured {
   font-family: 'Inter', sans-serif;
 }
+
+.img-stub {
+  width: 700px;
+  height: 500px;
+}
