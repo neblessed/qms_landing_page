@@ -2,13 +2,16 @@ import './TryIt.style.css'
 import { Check, Undo2 } from 'lucide-react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ITryitForm } from './TryIt.interface'
+import { Link } from 'react-router-dom'
 
 export const TryIt = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ITryitForm>();
+    const { register, handleSubmit, getValues, reset, formState: { errors } } = useForm<ITryitForm>({ mode: "onBlur" });
     const onSub: SubmitHandler<ITryitForm> = data => {
+        console.log(isValid)
         console.log(data);
+        reset();
     };
-
+    const isValid = Boolean(getValues().name && getValues().companyName && getValues().domain && getValues().email && getValues().isAgree)
     const InputErrorComponent = ({ message }: any) => {
         return (
             <div className="text-red-600 text-sm absolute end-0 font-bold text-qms">{message}</div>
@@ -53,7 +56,7 @@ export const TryIt = () => {
                         </div>
                         <input {...register('name', {
                             required: 'required field',
-                            maxLength: { value: 20, message: 'max length 20' }
+                            maxLength: { value: 20, message: 'max length 20' },
                         })} className="border-2 border-stone-300 block py-3 pl-2 w-110 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
@@ -77,7 +80,7 @@ export const TryIt = () => {
                         </div>
                         <input {...register('companyName', {
                             required: 'required field',
-                            maxLength: { value: 20, message: 'max length 20' }
+                            maxLength: { value: 20, message: 'max length 20' },
                         })} className="border-2 border-stone-300 block py-3 pl-2 w-110 rounded-xl hover:border-stone-400"></input>
                     </div>
                     <div className="gap-4 mt-5">
@@ -85,24 +88,26 @@ export const TryIt = () => {
                             <label className="text-base font-bold">Domain name</label>
                             {errors?.domain && <InputErrorComponent message={errors.domain.message} />}
                         </div>
-                        <div className="flex justify-center border-stone-300 border-2 w-110 rounded-xl hover:border-stone-400">
+                        <div className="flex justify-start border-stone-300 border-2 w-110 rounded-xl hover:border-stone-400">
                             <input {...register('domain', {
                                 required: 'required field',
-                                maxLength: { value: 20, message: 'max length 20' }
-                            })} className="block py-3 pl-2"></input>
-                            <div className="bg-stone-100 py-3 font-bold text-stone-500 w-30 text-center absolute right-0 border-r-2 border-stone-300 text-qms text-qms rounded-r-xl">.qms.cloud</div>
+                                maxLength: { value: 20, message: 'max length 20' },
+                            })} className="block py-3 pl-2 rounded-l-xl w-96"></input>
+                            <div className="bg-stone-100 py-3 font-bold text-stone-500 w-32 text-center absolute right-0 border-r-2 border-stone-300 text-qms text-qms rounded-r-xl">.qms.cloud</div>
                         </div>
                         <div className="flex justify-start mt-5 gap-3 text-qms">
                             <input {...register('isAgree', { required: '*', value: false })} type="checkbox" className="w-5 h-5" />
                             {errors.isAgree && <InputErrorComponent message={errors.isAgree.message} />}
                             <p className="font-medium">I agree to QMS Software Terms of use and Privacy Policy.</p>
                         </div>
-                        <button type="submit" className="rounded-3xl block mt-6 py-3 px-40 ml-8 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">
-                            <a href="/verification">Start my free trial</a>
-                        </button>
+                        <Link to={isValid ? "/verification" : "/free-trial"} type="submit">
+                            <button type='submit' className="rounded-3xl block mt-6 py-3 px-40 ml-8 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">
+                                Start my free trial
+                            </button>
+                        </Link>
                     </div>
                 </div>
-            </form>
+            </form >
         </div >
     );
 
