@@ -3,13 +3,13 @@ import { Check, Undo2 } from 'lucide-react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ITryitForm } from './TryIt.interface'
 import { Link } from 'react-router-dom'
+import { UserMockService } from './__mock__/UserService.mock'
 
 export const TryIt = () => {
-    const { register, handleSubmit, getValues, reset, formState: { errors } } = useForm<ITryitForm>({ mode: "onBlur" });
+    const userService = new UserMockService();
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm<ITryitForm>({ mode: "onBlur" });
     const onSub: SubmitHandler<ITryitForm> = data => {
-        console.log(isValid)
-        console.log(data);
-        reset();
+        userService.add(data);
     };
     const isValid = Boolean(getValues().name && getValues().companyName && getValues().domain && getValues().email && getValues().isAgree)
     const InputErrorComponent = ({ message }: any) => {
