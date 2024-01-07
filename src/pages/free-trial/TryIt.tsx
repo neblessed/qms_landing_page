@@ -10,6 +10,8 @@ export const TryIt = () => {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<ITryitForm>({ mode: "onBlur" });
     const onSub: SubmitHandler<ITryitForm> = data => {
         userService.add(data);
+        console.log(data);
+        console.log(userService.checkCurrent(data));
     };
     const isValid = Boolean(getValues().name && getValues().companyName && getValues().domain && getValues().email && getValues().isAgree)
     const InputErrorComponent = ({ message }: any) => {
@@ -101,7 +103,7 @@ export const TryIt = () => {
                             <p className="font-medium">I agree to QMS Software Terms of use and Privacy Policy.</p>
                         </div>
                         <Link to={isValid ? "/verification" : "/free-trial"} type="submit">
-                            <button type='submit' className="rounded-3xl block mt-6 py-3 px-40 ml-8 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">
+                            <button type='submit' onClick={handleSubmit(onSub)} className="rounded-3xl block mt-6 py-3 px-40 ml-8 text-qms font-bold bg-stone-700 text-white hover:bg-stone-800">
                                 Start my free trial
                             </button>
                         </Link>
